@@ -6,17 +6,19 @@ type TodoItem = {
   content: string;
 };
 const todos: TodoItem[] = [
-  { id: 1, content: "do something" },
-  { id: 2, content: "go somewhere" },
+  { id: 1, content: "勉強する" },
+  { id: 2, content: "学ぶ" },
+  { id: 3, content: "習う" },
 ];
 
-const listTodos = todos.map((todo: TodoItem) => {
-  return (
-    <li key={todo.id}>
-      <h2>{todo.content}</h2>
-    </li>
-  );
-});
+const listTodos = (todos: TodoItem[]) =>
+  todos.map((todo: TodoItem) => {
+    return (
+      <li key={todo.id}>
+        <h2>{todo.content}</h2>
+      </li>
+    );
+  });
 
 function App() {
   useEffect(() => {
@@ -35,7 +37,8 @@ function App() {
           );
         })}
       </ol>
-      <ul>{listTodos}</ul>
+      {/* better */}
+      <ul>{listTodos(todos)}</ul>
     </div>
   );
 }
